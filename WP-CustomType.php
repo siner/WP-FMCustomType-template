@@ -13,9 +13,9 @@ define( 'CUSTOM_TYPE_SINGULAR_NAME' , 'Test' );
 define( 'CUSTOM_TYPE_SLUG' , 'tests' );
 
 
-add_action('init', 'ctt_tests_register');
+add_action('init', 'ctt_register');
  
-function ctt_tests_register() {
+function ctt_register() {
  
 	$labels = array(
 		'name' => __( CUSTOM_TYPE_NAME ),
@@ -55,10 +55,10 @@ register_taxonomy("Types", array( CUSTOM_TYPE_SLUG ), array("hierarchical" => tr
 
 
 /* Columns */
-add_action('manage_posts_custom_column',  'ctt_' . CUSTOM_TYPE_SLUG . '_custom_columns');
-add_filter('manage_edit-' . CUSTOM_TYPE_SLUG . '_columns', 'ctt_' . CUSTOM_TYPE_SLUG . '_edit_columns');
+add_action('manage_posts_custom_column',  'ctt_custom_columns');
+add_filter('manage_edit-' . CUSTOM_TYPE_SLUG . '_columns', 'ctt_edit_columns');
  
-function ctt_tests_edit_columns($columns){
+function ctt_edit_columns($columns){
   $columns = array(
     'cb' => '<input type="checkbox" />',
     'title' => 'Title',
@@ -68,7 +68,7 @@ function ctt_tests_edit_columns($columns){
 }
 
 
-function ctt_tests_custom_columns($column){
+function ctt_custom_columns($column){
   global $post;
  
   switch ($column) {
@@ -99,13 +99,13 @@ function ctt_tests_custom_columns($column){
 
 /* Meta Boxes */
 
-add_action( 'admin_init' , 'ctt_' . CUSTOM_TYPE_SLUG . '_admin_init');
+add_action( 'admin_init' , 'ctt_admin_init');
  
-function ctt_tests_admin_init(){
-  add_meta_box( 'example-meta', 'Example', 'ctt_' . CUSTOM_TYPE_SLUG . '_example', CUSTOM_TYPE_SLUG , 'normal', 'low');
+function ctt_admin_init(){
+  add_meta_box( 'example-meta', 'Example', 'ctt_example', CUSTOM_TYPE_SLUG , 'normal', 'low');
 }
  
-function ctt_tests_example(){
+function ctt_example(){
   global $post;
   $custom = get_post_custom($post->ID);
   $example = sizeof($custom)>0 ? $custom["tests_example"][0] : '';
@@ -116,9 +116,9 @@ function ctt_tests_example(){
 }
 
 
-add_action('save_post', 'ctt_' . CUSTOM_TYPE_SLUG . '_save_details');
+add_action('save_post', 'ctt_save_details');
 
-function ctt_tests_save_details(){
+function ctt_save_details(){
   global $post;
 
 	if (!is_array($post) && $post->post_type == CUSTOM_TYPE_SLUG)
