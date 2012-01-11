@@ -8,9 +8,9 @@ Before activating plugin
 
 Just change the three defines to use the name you want.
 
-`define( 'CUSTOM_TYPE_NAME' , 'Tests' );`
-`define( 'CUSTOM_TYPE_SINGULAR_NAME' , 'Test' );`
-`define( 'CUSTOM_TYPE_SLUG' , 'tests' );`
+    define( 'CUSTOM_TYPE_NAME' , 'Tests' );
+    define( 'CUSTOM_TYPE_SINGULAR_NAME' , 'Test' );
+    define( 'CUSTOM_TYPE_SLUG' , 'tests' );
 
 Frontend Examples
 -----------------
