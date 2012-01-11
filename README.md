@@ -8,27 +8,26 @@ Before activating plugin
 
 Just change the three defines to use the name you want.
 
-`define( 'CUSTOM_TYPE_NAME' , 'Tests' );
-define( 'CUSTOM_TYPE_SINGULAR_NAME' , 'Test' );
-define( 'CUSTOM_TYPE_SLUG' , 'tests' );`
+`define( 'CUSTOM_TYPE_NAME' , 'Tests' );`
+`define( 'CUSTOM_TYPE_SINGULAR_NAME' , 'Test' );`
+`define( 'CUSTOM_TYPE_SLUG' , 'tests' );`
 
 Frontend Examples
 -----------------
 
-Some examples for the front-end side:
+First of all you have to get the post custom fields:
 
-`<?php $cf = get_post_custom();?>
-<p><strong>Text: </strong><?php echo $cf['tests_text'][0]; ?></p>
-<p><strong>Textarea: </strong><?php echo $cf['tests_textarea'][0]; ?></p>
-<p><strong>Checkbox: </strong><?php echo $cf['tests_checkbox'][0]; ?></p>
-<p><strong>Select: </strong><?php echo $cf['tests_select'][0]; ?></p>
-<p><strong>Radio: </strong><?php echo $cf['tests_radio'][0]; ?></p>
-<p><strong>Checkbox group: </strong>
-<?php $values = unserialize($cf['tests_checkbox_group'][0]); ?>
-<ul>
-	<?php foreach ($values as $val): ?>
-		<li><?php echo $val; ?></li>
-	<?php endforeach; ?>
-</ul>
-</p>`
 
+`$cf = get_post_custom();`
+
+* __Text:__ `echo $cf['tests_text'][0];`
+* __Textarea:__ `echo $cf['tests_textarea'][0];`
+* __Checkbox:__ `echo $cf['tests_checkbox'][0];`
+* __Select:__ `echo $cf['tests_select'][0];`
+* __Radio:__ `echo $cf['tests_radio'][0];`
+* __Checkbox group:__
+
+    $values = unserialize($cf['tests_checkbox_group'][0]);
+    foreach ($values as $val):
+      echo $val;
+    endforeach;
