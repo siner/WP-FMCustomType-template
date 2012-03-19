@@ -1,16 +1,13 @@
-WP-CustomType Template
+WP-FMCustomType Template
 ======================
 
 This is a simple plugin template for the creation of a Custom Type in WordPress.
 
-Before activating plugin
-------------------------
+Before Install
+--------------
 
-Just change the three defines to use the name you want.
+Change testpost, testposts and Testpost by your custom post name.  
 
-    define( 'CUSTOM_TYPE_NAME' , 'Tests' );
-    define( 'CUSTOM_TYPE_SINGULAR_NAME' , 'Test' );
-    define( 'CUSTOM_TYPE_SLUG' , 'tests' );
 
 Frontend Examples
 -----------------
